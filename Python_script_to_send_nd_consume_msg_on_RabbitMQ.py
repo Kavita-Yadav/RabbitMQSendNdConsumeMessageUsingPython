@@ -153,7 +153,7 @@ def connect(serverName: str, serverPort: int, userName: str, userPassword: str, 
     parameters = pika.ConnectionParameters(serverName,
                                             serverPort,
                                             '/',
-                                            credentials)
+                                            credentials, heartbeat=600, blocked_connection_timeout=600)
 
     connection = pika.BlockingConnection(parameters)
     channel = connection.channel()
